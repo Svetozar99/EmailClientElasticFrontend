@@ -1,10 +1,12 @@
 <template>
     <div>
         <h3 v-if="errorMsg">{{errorMsg}}</h3>
-            <div style="background:red; margin:2% 0 2% 0; padding: 2%" v-for="u in users" :key="u.id">
+            <div style="background:red; margin:2% 0 2% 0; padding: 2%" v-for="m in myMessages" :key="m.id">
             <div>
-                <h5>{{u.firstName}} {{u.lastName}}</h5>
-                <h5>{{u.username}}</h5>
+                <h5>From: {{m.from}}</h5>
+                <h5>Date: {{m.dateTime}}</h5>
+                <h5>Subject: {{m.subject}}</h5>
+                <h5>Content: {{m.content}}</h5>
             </div>
         </div>
     </div>
@@ -14,29 +16,27 @@
 import axios from '../../axiosConfig'
 
     export default {
-        name: 'AllUsers',
+        name: 'AllMyContact',
         created(){
             let token = localStorage.getItem('token');
-            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
-            console.log(`${token}` + " token u created")
-            this.getUsers()
+            axios.defaults.headers['Authorization'] = `${token}`
+            this.getMyMessages()
         },
         data(){
             return {
-                users: [],
+                myMessages: [],
                 errorMsg: ''
             }
         },
         methods:{
-            getUsers(){
+            getMyMessages(){
                 axios
-                .get('api/user')
+                .get('api/message/all-messages/by-account/1')
                 .then((response) => {
-                    this.users = response.data
-                    console.log(response.data + ' users')
+                    this.myMessages = response.data
+                    console.log(this.myMessages + ' messages')
                 })
                 .catch((error) => {
-                    console.log(this.token + " tokennnn")
                     console.log(error)
                     this.errorMsg = 'Error retriving data'
                 })

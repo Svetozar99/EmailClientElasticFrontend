@@ -7,11 +7,20 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="navbar-nav">
+        <li v-if="!tokenn" class="navbar-nav">
+            <a href="/login" class="nav-link">Log In</a>
+        </li>
+        <li v-if="tokenn" class="navbar-nav">
             <a href="/" class="nav-link">Users</a>
         </li>
-        <li class="navbar-nav">
+        <li v-if="tokenn" class="navbar-nav">
             <a href="/my-contacts" class="nav-link">My contacts</a>
+        </li>
+        <li v-if="tokenn" class="navbar-nav">
+            <a href="/my-messages" class="nav-link">My messages</a>
+        </li>
+        <li v-if="tokenn" class="navbar-nav">
+            <a href="/logout" class="nav-link">Log out</a>
         </li>
       </ul>
     </div>
@@ -20,18 +29,18 @@
 </template>
 
 <script>
-// import axios from '../axiosConfig'
+import axios from '../../axiosConfig'
 
-// export default {
-//   created(){
-//     let token = localStorage.getItem('token');
-//     axios.defaults.headers['Authorization'] = `${token}`
-//   },
-//   name:'TheNavigation',
-//   data(){
-//     return {
-//       tokenn: localStorage.getItem('token'),
-//     }
-//   }
-// }
+export default {
+  created(){
+    let token = localStorage.getItem('token');
+    axios.defaults.headers['Authorization'] = `${token}`
+  },
+  name:'TheNavigation',
+  data(){
+    return {
+      tokenn: localStorage.getItem('token'),
+    }
+  }
+}
 </script>
