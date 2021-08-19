@@ -22,6 +22,9 @@
         <li v-if="tokenn" class="navbar-nav">
             <a href="/logout" class="nav-link">Log out</a>
         </li>
+        <li v-if="!tokenn" class="navbar-nav">
+            <a href="/register" class="nav-link">Register</a>
+        </li>
       </ul>
     </div>
   </div>
