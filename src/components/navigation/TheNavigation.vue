@@ -25,6 +25,12 @@
         <li v-if="!tokenn" class="navbar-nav">
             <a href="/register" class="nav-link">Register</a>
         </li>
+        <li v-if="tokenn" class="navbar-nav">
+            <a href="/indexing" class="nav-link">Indexing</a>
+        </li>
+        <li v-if="tokenn" class="navbar-nav">
+            <a href="/messages-search" class="nav-link">Messages Search</a>
+        </li>
       </ul>
     </div>
   </div>
