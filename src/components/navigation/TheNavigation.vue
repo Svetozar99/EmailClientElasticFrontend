@@ -19,9 +19,7 @@
         <li v-if="tokenn" class="navbar-nav">
             <a href="/my-messages" class="nav-link">My messages</a>
         </li>
-        <li v-if="tokenn" class="navbar-nav">
-            <a href="/logout" class="nav-link">Log out</a>
-        </li>
+        
         <li v-if="!tokenn" class="navbar-nav">
             <a href="/register" class="nav-link">Register</a>
         </li>
@@ -30,6 +28,13 @@
         </li>
         <li v-if="tokenn" class="navbar-nav">
             <a href="/messages-search" class="nav-link">Messages Search</a>
+        </li>
+        <li v-if="tokenn" class="navbar-nav">
+            <a href="/contacts-search" class="nav-link">Contacts Search</a>
+        </li>
+        <br>
+        <li v-if="tokenn" class="navbar-nav">
+            <a href="/logout" class="nav-link">Log out</a>
         </li>
       </ul>
     </div>

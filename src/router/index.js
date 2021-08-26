@@ -7,6 +7,7 @@ import LogOut from '../components/logout/LogOut.vue'
 import Register from '../components/userComponent/Register.vue'
 import Indexing from '../components/elastic/Indexing.vue'
 import MessagesSearch from '../components/elastic/messages/MessagesSearch.vue'
+import ContactsSearch from '../components/elastic/contact/ContactsSearch.vue'
 
 const router = new createRouter({
     history: createWebHistory(),
@@ -49,6 +50,11 @@ const router = new createRouter({
             name: 'MessagesSearch',
             path: '/messages-search',
             component: MessagesSearch
+        },
+        {
+            name: 'ContactsSearch',
+            path: '/contacts-search',
+            component: ContactsSearch
         },
     ]
 })
